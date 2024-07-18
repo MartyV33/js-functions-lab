@@ -194,19 +194,22 @@ Complete the exercise in the space below:
 */
 
 function basicCalculator(num1, num2, operation) {
-    const operations = {
-        'add': (a, b) => a + b,
-        'subtract': (a, b) => a - b,
-        'multiply': (a, b) => a * b,
-        'divide': (a, b) => a / b
-    };
-    if (operation in operations && (operation !== 'divide' || num2 !== 0)) {
-        return operation;
-    }   else {
-        return 'Error: Wrong operation or divided by zero.';
+    switch(operation) {
+      case 'add':
+        return num1 + num2;
+      case 'subtract':
+        return num1 - num2;
+      case 'multiply':
+        return num1 * num2;
+      case 'divide':
+        if (num2 !== 0) {
+          return num1 / num2;
+        } else {
+          return 'Error: Division by zero is not allowed.';
+        }
+      default:
+        return 'Error: Invalid operation.';
     }
-
-}
-
-
-console.log('Exercise 9 Result:', basicCalculator(10, 5, "subtract"));
+  }
+console.log("Exercise 9 Result:", basicCalculator(10, 5, 'subtract'));
+  
